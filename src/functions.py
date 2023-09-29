@@ -18,12 +18,26 @@ def read_file(filename):
 
 def executed_operations(path):
     """
-    Возвращает только выполненные файлы
-    :param path: название файла
-    :return: список выполенных операций
+    Возвращает только выполненные файлы.
+    :param path: название файла.
+    :return: список выполенных операций.
     """
     executed_title = []
     for operation in path:
         if 'state' in operation and operation['state'] == 'EXECUTED':
             executed_title.append(operation)
     return executed_title
+
+
+def sorted_file(path):
+    """
+    Функция сортирует по дате файл из функции executed_operations()
+    :param path: название файла
+    :return: отсортированный по дате файл
+    """
+    sorted_operation = []
+    for operation in sorted(path, key=lambda operation: operation["date"], reverse=True):
+        sorted_operation.append(operation)
+        if len(sorted_operation) == 5:
+            break
+    return sorted_operation
