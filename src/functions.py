@@ -1,4 +1,6 @@
 import json
+import os
+from datetime import datetime
 
 def read_file(filename):
     """
@@ -31,9 +33,9 @@ def executed_operations(path):
 
 def sorted_file(path):
     """
-    Функция сортирует по дате файл из функции executed_operations()
-    :param path: название файла
-    :return: отсортированный по дате файл
+    Функция сортирует по дате файл из функции executed_operations().
+    :param path: название файла.
+    :return: отсортированный по дате файл.
     """
     sorted_operation = []
     for operation in sorted(path, key=lambda operation: operation["date"], reverse=True):
@@ -41,3 +43,13 @@ def sorted_file(path):
         if len(sorted_operation) == 5:
             break
     return sorted_operation
+
+
+def data_format(date_str):
+    """
+    Функция возвращает дату в понятном для клиента формате "ДД.ММ.ГГГГ".
+    :param date_str: строка с датой в формате в виде строки
+    :return: строка с датой в формате "ДД.ММ.ГГГГ"
+    """
+    date_formatted = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S.%f')
+    return date_formatted.strftime('%d.%m.%Y')
