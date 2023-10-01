@@ -2,13 +2,13 @@ from src.functions import read_file, executed_operations, sorted_file, show_oper
 
 
 def main():
-    # Чтение данных из файла
+    # Чтение данных из файла json
     operations = read_file('operations.json')
 
     # Фильтрация операций по статусу "Выполнено"
     executed_operation = executed_operations(operations)
 
-    # Сортировка операций по дате
+    # Сортировка операций по датам
     sorted_operations = sorted_file(executed_operation)
 
     # Вывод отсортированных операций в заданном формате
