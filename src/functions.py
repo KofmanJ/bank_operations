@@ -22,7 +22,7 @@ def executed_operations(path):
     """
     Функция возвращает только выполненные файлы.
     :param path: название файла.
-    :return: список выполенных операций.
+    :return: список выполненных операций.
     """
     executed_title = []
     for operation in path:
